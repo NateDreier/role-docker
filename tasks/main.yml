@@ -1,0 +1,51 @@
+---
+- name: update
+  yum:
+    name: '*'
+    state: present
+
+- name: Remove old versions
+  yum:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ old_items }}"
+
+- name: install pre docker
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ docker_pre }}"
+
+- name: install repo
+  yum_repository:
+    name: "{{ docker_repo_file_name }}"
+    description: "{{ docker_repo_description }}"
+    baseurl: "{{ docker_repo }}"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "{{ gpg_key_url }}"
+  become: true
+
+- name: update
+  yum: 
+    name: '*'
+    state: present
+
+- name: install docker
+  yum:
+    name: docker-ce
+    state: present
+  become: yes
+
+- name: start
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: add user to docker group
+  user:
+    name: "{{ docker_user }}"
+    group: docker
+  become: yes

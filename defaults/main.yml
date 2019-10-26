@@ -1,0 +1,28 @@
+---
+old_items:
+  - docker
+  - docker-client
+  - docker-client-latest
+  - docker-common
+  - docker-latest
+  - docker-latest
+  - docker-latest-logrotate
+  - docker-logrotate
+  - docker-engine
+
+docker_pre:
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+
+docker_repo_description: "Docker CE stable - $basearch"
+
+gpg_key_url: "https://download.docker.com/linux/centos/gpg"
+
+docker_repo: "https://download.docker.com/linux/centos/7/$basearch/stable"
+
+docker_repo_file_name: docker-ce
+
+docker_user: "nate"
+
+
