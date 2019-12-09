@@ -15,6 +15,13 @@ docker_pre:
   - device-mapper-persistent-data
   - lvm2
 
+docker_version_number: 3:18.09.9-3.el7
+
+docker_install:
+  - "docker-ce-{{ docker_version_number }}"
+  - "docker-cli-{{ docker_version_number }}"
+  - containerd.io
+
 docker_repo_description: "Docker CE stable - $basearch"
 
 gpg_key_url: "https://download.docker.com/linux/centos/gpg"
