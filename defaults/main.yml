@@ -11,18 +11,18 @@ old_items:
   - docker-engine
   - containerd.io
   - docker-ce
-  - docker-cli
+  - docker-ce-cli
 
 docker_pre:
   - yum-utils
   - device-mapper-persistent-data
   - lvm2
 
-docker_version_number: 3:18.09.9-3.el7
+docker_version_number: 18.09.9-3.el7
 
 docker_install:
-  - "docker-ce-{{ docker_version_number }}"
   - "docker-cli-{{ docker_version_number }}"
+  - "docker-ce-{{ docker_version_number }}"
   - containerd.io
 
 docker_repo_description: "Docker CE stable - $basearch"
