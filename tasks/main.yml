@@ -38,6 +38,21 @@
   loop: "{{ docker_install }}"
   become: yes
 
+- name: copy kubernetes.repo
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker.json
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: create dir
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0755
+
 - name: start
   systemd:
     name: docker
