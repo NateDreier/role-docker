@@ -42,7 +42,7 @@
   file:
     path: /etc/docker
     state: directory
-    0755
+    mode: 0755
 
 - name: copy daemon.json
   template:
