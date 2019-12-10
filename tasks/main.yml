@@ -38,10 +38,10 @@
   loop: "{{ docker_install }}"
   become: yes
 
-- name: copy kubernetes.repo
+- name: copy daemon.json
   template:
     src: daemon.json.j2
-    dest: /etc/daemon.json
+    dest: /etc/docker/daemon.json
     owner: root
     group: root
     mode: 0644
