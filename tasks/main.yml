@@ -41,7 +41,7 @@
 - name: copy kubernetes.repo
   template:
     src: daemon.json.j2
-    dest: /etc/docker.json
+    dest: /etc/daemon.json
     owner: root
     group: root
     mode: 0644
