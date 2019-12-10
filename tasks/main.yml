@@ -38,6 +38,12 @@
   loop: "{{ docker_install }}"
   become: yes
 
+- name: create /etc/docker
+  file:
+    path: /etc/docker
+    state: directory
+    0755
+
 - name: copy daemon.json
   template:
     src: daemon.json.j2
